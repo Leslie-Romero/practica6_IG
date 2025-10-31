@@ -1,8 +1,10 @@
 # Tarea 6 IG - Leslie Liu Romero Martín
 
-Para realizar la tarea, partimos del ejemplo de clase para aplicar las luces, sombras, texturas y vistas. Por la parte de las luces, he decidido implementar solo luz ambiente para que se pueda apreciar el color de los planetas aunque la luz no les esté dando directamente, y una luz puntual en el centro de la escena, "dentro" del sol, para imitar el efecto del sol siendo la única fuente de luz en el sistema planetario.
+Para realizar la tarea, partimos del ejemplo de clase para aplicar las luces, sombras, texturas y vistas. Tras ello, se han implementado diversas funcionalidades adicionales que se explicarán más adelante.
 
 ## Luces
+
+Por la parte de las luces, he decidido implementar solo luz ambiente para que se pueda apreciar el color de los planetas aunque la luz no les esté dando directamente, y una luz puntual en el centro de la escena, "dentro" del sol, para imitar el efecto del sol siendo la única fuente de luz en el sistema planetario.
 
 A continación, podemos ver la implementación de las luces:
 
@@ -50,6 +52,111 @@ function Luna(args) {
 ```
 
 ## Texturas
+
+Para las texturas, nos basamos en el ejemplo de clase para la implementación, sin embargo, en cuanto a variedad de texturas he querido experimentar y añadir bastante variedad de colores y formas a los distintos planetas. De hecho, como se puede apreciar a simple vista, aunque la Tierra, la Luna y el Sol están presentes, mi trabajo no representa de manera exacta el Sistema Solar, sino una versión más colorida y con más variedad de planetas.
+
+Estas son las texturas que he decidido utilizar:
+```js
+// Texturas
+const txtSun = new THREE.TextureLoader().load("src/textures/2k_sun.jpg");
+const txtMoon = new THREE.TextureLoader().load("src/textures/2k_moon.jpg");
+const txtSpace = new THREE.TextureLoader().load(
+  "src/textures/galaxy-night-landscape.jpg"
+);
+const txtVolcanic = new THREE.TextureLoader().load(
+  "src/textures/Volcanic.png"
+);
+const txtVenusian = new THREE.TextureLoader().load(
+  "src/textures/Venusian.png"
+);
+const txtEarthDay = new THREE.TextureLoader().load(
+  "src/textures/earthmap1k.jpg"
+);
+const txtEarthSpec = new THREE.TextureLoader().load(
+  "src/textures/2k_earth_specular_map.tif"
+);
+const txtEarthClouds = new THREE.TextureLoader().load(
+  "src/textures/2k_earth_clouds.jpg"
+);
+const txtEarthBump = new THREE.TextureLoader().load(
+  "src/textures/earthbump1k.jpg"
+);
+const txtEarthAlpha = new THREE.TextureLoader().load(
+  "src/textures/earthcloudmaptrans_invert.jpg"
+);
+const txtSwamp = new THREE.TextureLoader().load("src/textures/Swamp.png");
+const txtMartian = new THREE.TextureLoader().load("src/textures/Martian.png");
+const txtGas1 = new THREE.TextureLoader().load("src/textures/Gaseous1.png");
+const txtGas2 = new THREE.TextureLoader().load("src/textures/Gaseous2.png");
+const txtGas4 = new THREE.TextureLoader().load("src/textures/Gaseous4.png");
+
+```
+
+Además, no solo se han creado planetas con simples texturas, sino que para el caso especial de la Tierra, se le ha añadido cierto relieve tal y como se indicó en el ejemplo de clase, para darle cierta distinción con respecto al resto, aunque sea sutil.
+
+Esta es la creación de la Tierra, que como se puede observar, contiene más de una textura:
+```js
+// Tierra
+Planeta(
+    scene,
+    0.4,
+    5,
+    0.5,
+    0xffffff,
+    1.0,
+    1.2,
+    txtEarthDay,
+    txtEarthBump,
+    txtEarthSpec
+);
+```
+
+Y esta sería la función Planeta, con todas las opciones para los distintos tipos de texturas siguiendo el ejemplo de clase:
+```js
+function Planeta(
+  parent,
+  radio,
+  dist,
+  vel,
+  col,
+  f1,
+  f2,
+  texture = undefined,
+  texbump = undefined,
+  texspec = undefined,
+  texalpha = undefined,
+) {
+  let geom = new THREE.SphereGeometry(radio, 30, 30);
+  let mat = new THREE.MeshPhongMaterial({ color: col });
+  if (texture != undefined) {
+    mat.map = texture;
+  }
+  // Textura
+  if (texture != undefined) {
+    mat.map = texture;
+  }
+  // Rugosidad
+  if (texbump != undefined) {
+    mat.bumpMap = texbump;
+    mat.bumpScale = 1;
+  }
+  // Especular
+  if (texspec != undefined) {
+    mat.specularMap = texspec;
+    mat.specular = new THREE.Color("orange");
+  }
+  if (texalpha != undefined) {
+    //Con mapa de transparencia
+    mat.alphaMap = texalpha;
+    mat.transparent = true;
+    mat.side = THREE.DoubleSide;
+    mat.opacity = 1.0;
+  }
+
+  // Más cálculos
+  // [...]
+}
+```
 
 ## Planetas
 

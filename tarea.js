@@ -53,9 +53,6 @@ const txtVenusian = new THREE.TextureLoader().load(
 const txtEarthDay = new THREE.TextureLoader().load(
   "src/textures/earthmap1k.jpg"
 );
-const txtEarthNight = new THREE.TextureLoader().load(
-  "src/textures/2k_earth_nightmap.jpg"
-);
 const txtEarthSpec = new THREE.TextureLoader().load(
   "src/textures/2k_earth_specular_map.tif"
 );
@@ -132,7 +129,6 @@ function init() {
     txtEarthDay,
     txtEarthSpec,
     txtEarthClouds,
-    txtEarthNight,
     txtSwamp,
     txtMartian,
     txtGas1,
