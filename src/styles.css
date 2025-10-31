@@ -1,0 +1,29 @@
+.info {
+  position: absolute;
+  top: 30px;
+  width: 100%;
+  text-align: center;
+  color: #fff;
+  font-weight: bold;
+  background-color: transparent;
+  z-index: 1;
+  font-family: Monospace;
+}
+
+.btn {
+  position: absolute;
+  border-radius: 10px;
+  color: rgb(255, 255, 255);
+  border-color: rgb(255, 255, 255);
+  background-color: transparent;
+  z-index: 2;
+}
+
+.btn:hover {
+  background-color: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+}
+
+.active-btn {
+  background-color: rgba(255, 255, 255, 0.5);
+}
