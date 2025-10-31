@@ -16,8 +16,7 @@ let camera;
 let renderer;
 let estrella,
   Planetas = [],
-  Lunas = [],
-  Asteroides = [];
+  Lunas = [];
 let planetSpeeds = [];
 
 let t0 = 0;
@@ -395,8 +394,6 @@ function Luna(planeta, radio, dist, vel, col, angle, texture = undefined) {
   Lunas.push(luna);
   pivote.add(luna);
 }
-
-function Asteroide() {}
 
 //Bucle de animación
 function animate() {
