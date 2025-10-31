@@ -66,7 +66,7 @@ const txtEarthBump = new THREE.TextureLoader().load(
 const txtEarthAlpha = new THREE.TextureLoader().load(
   "src/textures/earthcloudmaptrans_invert.jpg"
 );
-const txtSwamp = new THREE.TextureLoader().load("src/texturesSwamp.png");
+const txtSwamp = new THREE.TextureLoader().load("./src/textures/Swamp.png");
 const txtMartian = new THREE.TextureLoader().load("src/textures/Martian.png");
 const txtGas1 = new THREE.TextureLoader().load("src/textures/Gaseous1.png");
 const txtGas2 = new THREE.TextureLoader().load("src/textures/Gaseous2.png");
