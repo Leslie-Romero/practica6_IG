@@ -612,5 +612,7 @@ if (mode != 1 && spaceship != undefined) {
 }
 ```
 
+![Ship](./imgs/ship.png)
+
 ## Créditos
 - Nave: https://sketchfab.com/3d-models/mevak-shuttle-24ac6eb2a5734c66bc1804821b6f7beb
